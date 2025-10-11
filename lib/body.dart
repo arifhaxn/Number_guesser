@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:number_guesser/countdown.dart';
 
 class Body extends StatefulWidget {
   const Body({super.key});
@@ -8,7 +9,6 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-
   var input = TextEditingController();
 
   @override
@@ -16,21 +16,58 @@ class _BodyState extends State<Body> {
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
-          color: Colors.yellow
+          gradient: LinearGradient(colors: [
+            Color.fromARGB(255, 15, 80, 133),
+            Color.fromARGB(255, 23, 133, 180)
+          ]),
         ),
         child: Center(
           child: SizedBox(
             height: 400,
             width: 400,
             child: Card(
-              color: Colors.amber,
+              color: const Color.fromARGB(255, 160, 222, 255),
               child: Center(
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: TextField(
-                    controller: input,
-                    decoration: const InputDecoration(
-                      labelText: 'Enter Your Number :)'
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const Text(
+                          'Think of a Number and I\'ll Guess It',
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        TextField(
+                          controller: input,
+                          decoration: const InputDecoration(
+                              border: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20))),
+                              labelText: 'Enter Your Number :)'),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor:
+                                    const Color.fromARGB(255, 31, 149, 200),
+                                foregroundColor: Colors.white),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const Countdown(),
+                                  ));
+                            },
+                            child: const Text('Guess'))
+                      ],
                     ),
                   ),
                 ),
@@ -38,6 +75,7 @@ class _BodyState extends State<Body> {
             ),
           ),
         ),
-      ),);
+      ),
+    );
   }
 }
