@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:number_guesser/countdown.dart';
 
 class Body extends StatefulWidget {
-  const Body({super.key});
+  const Body({super.key,});
 
   @override
   State<Body> createState() => _BodyState();
@@ -63,7 +63,7 @@ class _BodyState extends State<Body> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const Countdown(),
+                                    builder: (context) =>  Countdown(result: input.text,),
                                   ));
                             },
                             child: const Text('Guess'))
